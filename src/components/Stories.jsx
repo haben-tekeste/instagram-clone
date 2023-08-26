@@ -17,7 +17,7 @@ export default function Stories() {
     setUsers(storyUsers);
     console.log(storyUsers);
   }, []);
-  return <div>
+  return <div className="flex space-x-2 p-6 bg-white mt-8 border-gray-200 border overflow-x-scroll scrollbar-none rounded-sm ">
     {users && users.map((user) => <Story key={user.id} user={user} />)}
   </div>;
 }

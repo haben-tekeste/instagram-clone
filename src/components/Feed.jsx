@@ -1,4 +1,5 @@
 import Stories from "./Stories";
+import Posts from "./Posts";
 
 export default function Feed() {
   return (
@@ -8,6 +9,7 @@ export default function Feed() {
         <Stories />
 
         {/* posts */}
+        <Posts />
       </section>
       <section>
         {/* mini-profile */}
