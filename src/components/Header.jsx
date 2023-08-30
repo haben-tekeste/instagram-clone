@@ -2,8 +2,6 @@
 
 import React from "react";
 import Image from "next/image";
-import { AuthOptions } from "next-auth";
-import { getServerSession } from "next-auth";
 import { useSession, signIn, signOut } from "next-auth/react";
 
 import {
@@ -14,7 +12,7 @@ import { HomeIcon } from "@heroicons/react/24/solid";
 
 export default function Header() {
   const { data } = useSession();
-
+  console.log(data);
   return (
     <div className="shadow-sm border-b sticky top-0 bg-white z-30">
       <div className="flex items-center justify-between max-w-6xl mx-4 xl:mx-auto">

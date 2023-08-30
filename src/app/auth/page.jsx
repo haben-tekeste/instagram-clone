@@ -4,9 +4,8 @@ import { authOptions } from "../api/auth/[...nextauth]/route";
 import {signIn} from 'next-auth/react'
 import SignInButton from "@/components/SignInButton";
 
-export default async function Auth() {
-  const session = await getServerSession(authOptions);
-  console.log(session);
+export default  function Auth() {
+
   return (
     <>
       <Header />
