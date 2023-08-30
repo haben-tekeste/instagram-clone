@@ -1,5 +1,10 @@
+"use client";
+
 import React from "react";
 import Image from "next/image";
+import { AuthOptions } from "next-auth";
+import { getServerSession } from "next-auth";
+import { useSession, signIn, signOut } from "next-auth/react";
 
 import {
   MagnifyingGlassIcon,
@@ -8,6 +13,8 @@ import {
 import { HomeIcon } from "@heroicons/react/24/solid";
 
 export default function Header() {
+  const { data } = useSession();
+
   return (
     <div className="shadow-sm border-b sticky top-0 bg-white z-30">
       <div className="flex items-center justify-between max-w-6xl mx-4 xl:mx-auto">
@@ -43,12 +50,19 @@ export default function Header() {
         {/* right */}
         <div className="flex space-x-4 items-center">
           <HomeIcon className="hidden md:inline-flex h-6 cursor-pointer hover:scale-125 transition-transform duration-200" />
-          <PlusCircleIcon className="h-6 cursor-pointer hover:scale-125 transition-transform duration-200" />
-          <img
-            src="https://placehold.co/400"
-            alt="profile image"
-            className="h-10 rounded-full"
-          />
+          {data ? (
+            <>
+              <PlusCircleIcon className="h-6 cursor-pointer hover:scale-125 transition-transform duration-200" />
+              <img
+                src={data?.user.image}
+                alt="profile image"
+                className="h-10 rounded-full cursor-pointer"
+                onClick={signOut}
+              />
+            </>
+          ) : (
+            <button onClick={signIn}>Sign in</button>
+          )}
         </div>
       </div>
     </div>
